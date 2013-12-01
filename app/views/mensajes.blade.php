@@ -7,7 +7,7 @@
       <div class="col-md-5"> 
         <div class="panel panel-primary"> 
           <div class="panel-heading"> 
-            <span class="glyphicon glyphicon-comment"></span> Conversación Tal y Cual <span class="contador">{{$mensajes->count()}}</span>
+            <span class="glyphicon glyphicon-comment"></span> {{ $conversacion->name }} <span class="contador">{{$mensajes->count()}}</span>
             <div class="btn-group pull-right"> 
               <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown"> 
               <span class="glyphicon glyphicon-chevron-down"></span> 
@@ -65,6 +65,7 @@
           <div class="panel-footer"> 
 
             <div class="input-group"> 
+              <input type="hidden" id="conversacion_id" value="{{ $conversacion->id }}">
               <input id="btn-input" type="text" class="form-control input-sm" placeholder="Escribe un mensaje..." /> 
               <span class="input-group-btn"> 
                 <button class="btn btn-warning btn-sm" id="btn-chat"><span class="glyphicon glyphicon-envelope"></span> Enviar</button> 
@@ -78,8 +79,9 @@
 
   <script>
     $("#btn-chat").on('click', function(e){
-      var mensaje = $("#btn-input").val();
+      var mensaje = $('#btn-input').val();
       var usuario_id = 1;
+      var conversacion_id = $('#conversacion_id').val();
       if (mensaje != "")
       {
           // Envía mensaje al servidor mediante ajax
@@ -90,13 +92,16 @@
           data: { 
             'texto': mensaje,
             'usuario_id': usuario_id,
+            'conversacion_id': conversacion_id,
           },
           beforeSend : function (data) {
           },
           success: function(data) 
           {  
             //Procesar la respuesta
-            console.log(data)
+            console.log(data);
+            $('#btn-input').val('');
+
           },                    
           error: function (xhr, ajaxOptions, thrownError) {
            console.log(xhr.status);

@@ -56,6 +56,8 @@ Route::get('/ws/user', function()
 });
 
 Route::get('/mensaje', 'MensajeController@listar');
+//Esta segunda con el id de la conversacion no me funciona
+Route::get('/mensaje/{conversacion}', 'MensajeController@listar');
 
 Route::post('/mensaje_enviar', 'MensajeController@enviar');
 
