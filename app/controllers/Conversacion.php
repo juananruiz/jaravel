@@ -2,12 +2,14 @@
 // http://culttt.com/2013/08/12/building-out-restful-controller-methods-in-laravel-4/
 // Esto es un intento de controlador RESTful
 class Conversacion extends BaseController
+*/
 {
   public function index()
   {
     //TODO: aquí iría el id del usuario que se ha autenticado
     $usuario_id = 1;
     $conversaciones = Conversacion::where('usuario_id', '=', $usuario_id)->get();
+    $conversaciones = Conversacion::all();
     return View::make('conversaciones', array('conversaciones' => $conversaciones));
   }
   

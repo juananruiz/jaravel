@@ -10,11 +10,6 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-Route::model('usuario', 'Usuario');
-Route::model('conversacion', 'Conversacion');
-
-Route::get('/borrar/{conversacion}', 'ConversacionController@borrar');
-Route::post('/borrar', 'ConversacionController@gestionaBorrado');
 
 Route::get('/', function()
 {
@@ -46,29 +41,42 @@ Route::post('/mensaje_enviar', 'MensajeController@enviar');
 //                          Ejemplos y pruebas
 //
 //-------------------------------------------------------------------------------- 
+// Route::model('usuario', 'Usuario');
 
-Route::get('/lahora', function()
+// Route::model('conversacion', 'Conversacion');
+
+// Route::get('/borrar/{conversacion}', 'ConversacionController@borrar');
+
+// Route::post('/borrar', 'ConversacionController@gestionaBorrado');
+
+/* Route::get('/lahora', function()
 {
   $dt = Carbon::now();
   setlocale(LC_TIME, 'es_ES');
   return $dt->formatlocalized('%A %d %B %Y');
 });
+*/
 
-Route::get('/secreta',  array('before' => 'auth', function() 
+/* Route::get('/secreta',  array('before' => 'auth', function() 
 {
 	return View::make('layouts.secreta');
 }));
+*/
 
-// Un web service que me devuelve todos los usuarios en formato json
+/* Un web service que me devuelve todos los usuarios en formato json
 Route::get('/ws/user', function()
 {
   return  Response::json(Usuario::All());
 });
+*/
 
-//Esta con el id de la conversacion no me funciona
-Route::get('/mensaje/{conversacion}', 'MensajeController@listar');
+// Esta con el id de la conversacion no me funciona
+// Route::get('/mensaje/{conversacion}', 'MensajeController@listar');
 
+/*
 Route::get('/libros/{genero}', function($genero)
 {
      return "Libros en la categoría {$genero}.";
 });
+*/
+
