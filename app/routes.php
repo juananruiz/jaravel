@@ -21,10 +21,31 @@ Route::get('/', function()
 	return View::make('layouts.base');
 });
 
+Route::get('/login', function()
+{
+  return View::make('layouts.login');
+});
+
+Route::post('/login', 'AuthController@doLogin');
+
 Route::get('/usuarios', function()
 {
 	return View::make('usuarios');
 });
+
+// Enrutando a un controlador RESTful (o casi)
+Route::controller('Conversacion','Conversacion');
+
+Route::get('/mensaje', 'MensajeController@listar');
+
+Route::post('/mensaje_enviar', 'MensajeController@enviar');
+
+
+//-------------------------------------------------------------------------------- 
+//
+//                          Ejemplos y pruebas
+//
+//-------------------------------------------------------------------------------- 
 
 Route::get('/lahora', function()
 {
@@ -38,28 +59,14 @@ Route::get('/secreta',  array('before' => 'auth', function()
 	return View::make('layouts.secreta');
 }));
 
-Route::get('/login', function()
-{
-  return View::make('layouts.login');
-});
-
-Route::post('/login', 'AuthController@doLogin');
-
-Route::get('users', function()
-{ 
-  return View::make('users');
-});
-
+// Un web service que me devuelve todos los usuarios en formato json
 Route::get('/ws/user', function()
 {
   return  Response::json(Usuario::All());
 });
 
-Route::get('/mensaje', 'MensajeController@listar');
-//Esta segunda con el id de la conversacion no me funciona
+//Esta con el id de la conversacion no me funciona
 Route::get('/mensaje/{conversacion}', 'MensajeController@listar');
-
-Route::post('/mensaje_enviar', 'MensajeController@enviar');
 
 Route::get('/libros/{genero}', function($genero)
 {
