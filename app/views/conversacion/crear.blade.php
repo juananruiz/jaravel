@@ -1,4 +1,4 @@
-{{ Form::open(array('route' => 'postConversacion', 'method' => 'POST')) }}
+{{ Form::open(array('url' => '/conversacion/guardar', 'method' => 'POST')) }}
 	<ul>
 		<li>
 			{{ Form::label('name', 'Name:') }}

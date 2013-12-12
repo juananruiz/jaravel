@@ -3,7 +3,7 @@
 @section('contenido')
   <ul>
   @foreach ($conversaciones as $conversacion)
-    <li>{{$conversacion}}</li>
+    <li>{{$conversacion->name}}</li>
   @endforeach
   </ul>
 @stop

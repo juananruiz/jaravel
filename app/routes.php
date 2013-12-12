@@ -29,12 +29,17 @@ Route::get('/usuarios', function()
 });
 
 // Enrutando a un controlador RESTful (o casi)
-Route::controller('Conversacion','Conversacion');
+Route::get('/conversacion', 'ConversacionController@listar');
+
+Route::get('/conversacion/crear', 'ConversacionController@crear');
+
+Route::post('/conversacion/guardar', 'ConversacionController@store');
 
 Route::get('/mensaje', 'MensajeController@listar');
 
 Route::post('/mensaje_enviar', 'MensajeController@enviar');
 
+Route::resource('/foto', 'FotoController');
 
 //-------------------------------------------------------------------------------- 
 //
@@ -45,9 +50,9 @@ Route::post('/mensaje_enviar', 'MensajeController@enviar');
 
 // Route::model('conversacion', 'Conversacion');
 
-// Route::get('/borrar/{conversacion}', 'ConversacionController@borrar');
+// Route::get('/conversacion/borrar/{conversacion}', 'ConversacionController@borrar');
 
-// Route::post('/borrar', 'ConversacionController@gestionaBorrado');
+// Route::post('/conversacion/borrar', 'ConversacionController@gestionaBorrado');
 
 /* Route::get('/lahora', function()
 {
