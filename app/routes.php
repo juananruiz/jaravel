@@ -55,7 +55,7 @@ Route::get('/ws/user', function()
   return  Response::json(Usuario::All());
 });
 
-Route::get('/mensaje', 'MensajeController@listar');
+Route::get('/mensajes', 'MensajeController@listar');
 
 Route::post('/mensaje_enviar', 'MensajeController@enviar');
 
